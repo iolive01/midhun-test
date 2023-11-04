@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Existing CSS remains unchanged */
+
+        /* Add this CSS to set the size of the video */
+        #media {
+            width: 450px;
+            height: 450px;
+        }
+
+        body {
+            background-color: #87CEFA; /* Light Blue */
+        }
+
+        header {
+            background-color: #000; /* Black */
+        }
+
+        header h1 {
+            color: #fff; /* White */
+        }
+
+        .iphone-container {
+            background-color: #f0f0f0; /* Light Gray */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block; /* Make the container inline-block */
+        }
+
+        .gallery {
+            background-color: #fff; /* White */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #buttons-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <h1 class="display-4">Media Gallery</h1>
+        </div>
+    </header>
+    <main class="container my-4 text-center">
+        <div class="iphone-container">
+            <div class="gallery">
+                <h1 class="text-center mb-4">Ronaldooo!!⚽🥴
+                    <div id="media-container" class="text-center">
+                        <video id="media" controls onended="showButtons()">
+                            <source src="https://drive.google.com/uc?export=download&id=1z9pLGHEdPRpBO6WEY9c6NtjFMVfLwHdc">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div id="buttons-container">
+                        <button id="button1" class="btn btn-success btn-lg mr-2" onclick="changeVideo('https://drive.google.com/uc?export=download&id=1iqR6hUROBLwUYCUqNxxUql5warBVJonu')">Yes 🤪</button>
+                        <button id="button2" class="btn btn-danger btn-lg mr-2" onclick="changeVideo('https://drive.google.com/uc?export=download&id=1jR6yE2-YOnSLWZiniWXuzHXxTN2ZMtWI')">No🥴</button>
+                        <!-- New buttons -->
+                        <button id="butt1" class="btn btn-info btn-lg mr-2 hidden" onclick="changeVideo('https://drive.google.com/uc?export=download&id=1qAxy2Zv5eI5R1DQDzmOcojesH03SeUpZ')">Siuu🤯 </button>
+                        <button id="butt2" class="btn btn-warning btn-lg mr-2 hidden" onclick="changeVideo('https://drive.google.com/uc?export=download&id=18WPt2gXqvQlGVr1XFF4-UZ_GjVOIt8Zt')">Wow 😲</button>
+                        <button id="butt3" class="btn btn-info btn-lg mr-2 hidden" onclick="changeVideo('https://drive.google.com/uc?export=download&id=1YAHlGT5NtkOVy2A7rXEdaJDRyEJH5t1D')">I dont like it much👎🙄</button>
+                        <button id="butt4" class="btn btn-warning btn-lg mr-2 hidden" onclick="changeVideo('https://drive.google.com/uc?export=download&id=19L1E2oQXm-Der_pRqf_bAcIE24H3PJqV')">Messi is Better</button>
+                    </div>
+                </h1>
+            </div>
+        </div>
+    </main>
+    <!-- Reload button -->
+    <button id="reloadButton" class="btn btn-primary btn-lg mr-2" onclick="reloadPage()">Reload</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const media = document.getElementById('media');
+        const buttonsContainer = document.getElementById('buttons-container');
+
+        function showButtons() {
+            buttonsContainer.style.display = 'block';
+        }
+
+        function changeVideo(newSource) {
+            media.src = newSource;
+            buttonsContainer.style.display = 'none'; // Hide the buttons when a new video is loaded
+
+            // Show buttons based on the new video source
+            if (newSource === 'https://drive.google.com/uc?export=download&id=1iqR6hUROBLwUYCUqNxxUql5warBVJonu') {
+                document.getElementById('button1').style.display = 'none';
+                document.getElementById('button2').style.display = 'none';
+                document.getElementById('butt1').classList.remove('hidden');
+                document.getElementById('butt2').classList.remove('hidden');
+            } else if (newSource === 'https://drive.google.com/uc?export=download&id=1jR6yE2-YOnSLWZiniWXuzHXxTN2ZMtWI') {
+                document.getElementById('button1').style.display = 'none';
+                document.getElementById('button2').style.display = 'none';
+                document.getElementById('butt3').classList.remove('hidden');
+                document.getElementById('butt4').classList.remove('hidden');
+            }
+        }
+
+        // JavaScript function for reloading the page
+        function reloadPage() {
+            location.reload(true);
+        }
+    </script>
+</body>
+</html>
